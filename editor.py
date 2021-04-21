@@ -1,8 +1,11 @@
-print('''# John Lennon
-or ***John Winston Ono Lennon*** was one of *The Beatles*.
-Here are the songs he wrote I like the most:
-* Imagine
-* Norwegian Wood
-* Come Together
-* In My Life
-* ~~Hey Jude~~ (that was *McCartney*)''')
+formatters = ['plain', 'bold', 'italic', 'header', 'link', 'inline-code', 'ordered-list', 'unordered-list', 'new-line']
+
+command = input('- Choose a formatter: ')
+
+while command != '!done':
+    if command == '!help':
+        print('Available formatters:', *formatters)
+        print('Special commands: !help !done')
+    elif command not in formatters:
+        print('Unknown formatting type or command. Please try again.')
+    command = input('- Choose a formatter: ')
