@@ -21,6 +21,20 @@ def header(level, text):
         return -1
 
 
+def ordered_list(*rows):
+    output = str()
+    for index, row in enumerate(rows):
+        output = output + f'{index + 1}. {row}' + '\n'
+    return output
+
+
+def unordered_list(*rows):
+    output = str()
+    for index, row in enumerate(rows):
+        output = output + f'* {row}' + '\n'
+    return output
+
+
 formatters = ['plain', 'bold', 'italic', 'header', 'link', 'inline-code', 'ordered-list', 'unordered-list', 'new-line']
 formatted_text = str()
 command = input('- Choose a formatter: ')
@@ -53,6 +67,26 @@ while command != '!done':
             formatted_text = formatted_text + l
         if command == 'new-line':
             formatted_text = formatted_text + '\n'
+        if command == 'ordered-list':
+            n = int(input('- Number of rows: '))
+            while n <= 0:
+                print('The number of rows should be greater than zero')
+                n = int(input('- Number of rows: '))
+            row_list = list()
+            for i in range(n):
+                row_list.append(input(f'- Row #{i + 1}: '))
+            ol = ordered_list(*row_list)
+            formatted_text = formatted_text + ol
+        if command == 'unordered-list':
+            n = int(input('- Number of rows: '))
+            while n <= 0:
+                print('The number of rows should be greater than zero')
+                n = int(input('- Number of rows: '))
+            row_list = list()
+            for i in range(n):
+                row_list.append(input(f'- Row #{i + 1}: '))
+            ul = unordered_list(*row_list)
+            formatted_text = formatted_text + ul
         print(formatted_text)
     else:
         print('Unknown formatting type or command. Please try again.')
