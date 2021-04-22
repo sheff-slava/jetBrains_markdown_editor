@@ -91,3 +91,6 @@ while command != '!done':
     else:
         print('Unknown formatting type or command. Please try again.')
     command = input('- Choose a formatter: ')
+
+with open('output.md', 'w') as file:
+    file.write(formatted_text)
